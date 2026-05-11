@@ -1,0 +1,272 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0a0a0a;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ===== LUCE METALLICA DINAMICA ===== */
+
+.hero h1 {
+  font-size: 80px;
+  line-height: 1.1;
+  background: linear-gradient(
+    120deg,
+    #777,
+    gold,
+    #b87333,
+    silver,
+    #777
+  );
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: metallic 6s infinite linear;
+  padding: 220px 60px 140px;
+}
+
+@keyframes metallic {
+  0% { background-position: 0% }
+  100% { background-position: 300% }
+}
+
+/* ===== HEADER ===== */
+
+header {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 60px;
+  z-index: 10;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+}
+
+nav a {
+  color: #bbb;
+  text-decoration: none;
+  margin-left: 25px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: gold;
+}
+
+/* ===== SEZIONI ===== */
+
+.section {
+  min-height: 100vh;
+  padding: 140px 60px;
+  position: relative;
+  z-index: 2;
+}
+
+h2 {
+  margin-bottom: 30px;
+  letter-spacing: 3px;
+}
+
+/* ===== CARDS METAL ===== */
+
+.cards {
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  flex: 1;
+  height: 200px;
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.gold { border: 1px solid gold; }
+.copper { border: 1px solid #b87333; }
+.silver { border: 1px solid silver; }
+
+/* ===== SVG IMPALCATURA ===== */
+
+.scaffold {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.scaffold line {
+  stroke: rgba(255,255,255,0.05);
+  stroke-width: 0.5;
+}
+
+
+/* ===== LOGO ===== */
+
+.logo {
+  font-weight: bold;
+  letter-spacing: 4px;
+  font-size: 20px;
+  text-decoration: none;
+  background: linear-gradient(
+    120deg,
+    gold,
+    #b87333,
+    silver,
+    gold
+  );
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: logoMetal 6s linear infinite;
+  transition: 0.3s;
+}
+
+/* Animazione metallo */
+
+@keyframes logoMetal {
+  0% { background-position: 0% }
+  100% { background-position: 300% }
+}
+
+/* Effetto hover */
+
+.logo:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+
+/* ===== WRAPPER ===== */
+
+.qr-wrapper {
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* ===== CORNICE METALLICA ===== */
+
+.metal-frame {
+  position: relative;
+  display: inline-block;
+  padding: 20px 50px 20px;
+  background: linear-gradient(145deg, #111, #1a1a1a);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Bordo metallico animato */
+
+.metal-frame::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    45deg,
+    gold,
+    #b87333,
+    silver,
+    gold
+  );
+  z-index: -1;
+  animation: metalBorder 5s linear infinite;
+}
+
+/* Animazione bordo */
+
+@keyframes metalBorder {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+/* ===== IMMAGINE QR ===== */
+
+.qr-image {
+  width: 250px;
+  display: block;
+  /* background: white; */
+  padding: 0;
+}
+
+/* ===== TESTO ===== */
+
+.qr-text {
+  margin-top: 20px;
+  letter-spacing: 2px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+
+/* Luce che attraversa la cornice */
+
+.metal-frame {
+  overflow: hidden;
+}
+
+.metal-frame::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255,255,255,0.2),
+    transparent 60%
+  );
+  transform: rotate(25deg);
+  animation: lightSweep 4s infinite;
+}
+
+@keyframes lightSweep {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  100% { transform: translateX(100%) rotate(25deg); }
+}
+
+
+
+@media (max-width: 768px) {
+
+    header {
+        padding: 20px;
+    }
+
+    nav {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .section {
+        padding: 100px 25px;
+    }
+
+    .cards {
+        flex-direction: column;
+    }
+
+   .card {
+        height: 150px;
+    }
+}
