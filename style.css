@@ -264,9 +264,10 @@ h2 {
 
     .cards {
         flex-direction: column;
+        height: 200px;
     }
 
    .card {
-        height: 150px;
+        height: 200px;
     }
 }
